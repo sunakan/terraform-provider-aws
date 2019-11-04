@@ -137,6 +137,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/worklink"
 	"github.com/aws/aws-sdk-go/service/workspaces"
 	"github.com/aws/aws-sdk-go/service/xray"
+	"github.com/davecgh/go-spew/spew"
 	awsbase "github.com/hashicorp/aws-sdk-go-base"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/logging"
 )
@@ -320,6 +321,7 @@ func (c *Config) Client() (interface{}, error) {
 	}
 
 	log.Println("[INFO] Building AWS auth structure")
+	log.Printf("[TRACE] c = %s\n", spew.Sdump(c))
 	awsbaseConfig := &awsbase.Config{
 		AccessKey:               c.AccessKey,
 		AssumeRoleARN:           c.AssumeRoleARN,
